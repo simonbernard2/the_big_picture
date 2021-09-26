@@ -1,5 +1,6 @@
 class UploadController < ApplicationController
-  def make_mozaic
+  protect_from_forgery
+  def make_mosaic
     return render json: { status: 'error', message: 'missing image_url param' } if params[:image_url].blank?
     return render json: { status: 'error', message: 'missing size param' } if params[:size].blank?
     return render json: { status: 'error', message: 'missing resolution param' } if params[:resolution].blank?
@@ -16,7 +17,8 @@ class UploadController < ApplicationController
   end
 
   def upload_images
-    urls = params[:urls].split(',')
+    urls = params[:urls]
+    p params
     urls.each do |url|
       picture = Picture.find_or_create_by(image_url: url)
       picture.save
