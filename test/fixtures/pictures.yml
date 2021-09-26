@@ -1,0 +1,41 @@
+# == Schema Information
+#
+# Table name: pictures
+#
+#  id          :bigint           not null, primary key
+#  title       :string(255)
+#  subtitle    :string(255)
+#  image_url   :string(255)
+#  width       :integer
+#  height      :integer
+#  ratio       :float(24)
+#  red_value   :integer
+#  green_value :integer
+#  blue_value  :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+one:
+  title: MyString
+  subtitle: MyString
+  image_url: MyString
+  width: 1
+  height: 1
+  ratio: 1.5
+  red_value: 1
+  green_value: 1
+  blue_value: 1
+  is_main_picture: false
+
+two:
+  title: MyString
+  subtitle: MyString
+  image_url: MyString
+  width: 1
+  height: 1
+  ratio: 1.5
+  red_value: 1
+  green_value: 1
+  blue_value: 1
+  is_main_picture: false
