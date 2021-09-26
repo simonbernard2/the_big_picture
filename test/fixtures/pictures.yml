@@ -19,23 +19,36 @@
 one:
   title: MyString
   subtitle: MyString
-  image_url: MyString
-  width: 1
-  height: 1
+  image_url: https://i.imgur.com/GL7igry.png
   ratio: 1.5
-  red_value: 1
-  green_value: 1
+  width: 1
+  height: 173
+  red_value: 150
+  green_value: 128
   blue_value: 1
-  is_main_picture: false
 
 two:
   title: MyString
   subtitle: MyString
-  image_url: MyString
-  width: 1
-  height: 1
+  image_url: https://i.imgur.com/OuSizUw.jpeg
   ratio: 1.5
-  red_value: 1
-  green_value: 1
-  blue_value: 1
-  is_main_picture: false
+  width: 1920
+  height: 1080
+  red_value: 179
+  green_value: 156
+  blue_value: 137
+
+black:
+  title: black
+  image_url: https://i.imgur.com/NakfHv4.jpeg
+  ratio: 0.6
+  width: 1440
+  height: 2560
+  red_value: 0
+  green_value: 0
+  blue_value: 0
+
+no_pic:
+  title: MyString
+  subtitle: MyString
+  image_url:
