@@ -1,4 +1,4 @@
-# README
+# The Big Picture
 
 ## Intro
 
