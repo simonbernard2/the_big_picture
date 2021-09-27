@@ -2,9 +2,12 @@ class UploadController < ApplicationController
   protect_from_forgery
 
   def make_mosaic
+    # TODO: Clean this a little.
     return render json: { status: 'error', message: 'missing image_url param' } if params[:image_url].blank?
     return render json: { status: 'error', message: 'missing size param' } if params[:size].blank?
-    return render json: { status: 'error', message: 'invalid size param' } if params[:size].to_i < 2
+    if params[:size].to_i < 2 || params[:size].to_i > 100
+      return render json: { status: 'error', message: 'invalid size param' }
+    end
     return render json: { status: 'error', message: 'missing resolution param' } if params[:resolution].blank?
     if params[:resolution].to_i < 1 || params[:resolution].to_i > 255
       return render json: { status: 'error', message: 'invalid resolution param' }

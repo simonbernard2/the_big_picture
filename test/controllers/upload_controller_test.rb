@@ -23,7 +23,7 @@ class UploadControllerTest < ActionDispatch::IntegrationTest
     assert_equal expected, actual
   end
 
-  test 'should not be able to create mosaic if resolution not and integer' do
+  test 'should not be able to create mosaic if resolution is invalid' do
     url = "#{file_fixture_path}/sky.jpeg"
     get make_mosaic_url, params: { image_url: url, size: 'ekd', resolution: 10 }
     response = JSON.parse(@response.body)
@@ -44,7 +44,7 @@ class UploadControllerTest < ActionDispatch::IntegrationTest
     assert_equal expected, actual
   end
 
-  test 'should not be able to create mosaic if size not and integer' do
+  test 'should not be able to create mosaic if size is invalid' do
     url = "#{file_fixture_path}/sky.jpeg"
     get make_mosaic_url, params: { image_url: url, size: 'ekd', resolution: 10 }
     response = JSON.parse(@response.body)
