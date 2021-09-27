@@ -3,7 +3,7 @@ require 'test_helper'
 class UploadControllerTest < ActionDispatch::IntegrationTest
 
   test 'should not be able to create mosaic without image_url' do
-    get make_mosaic_url
+    post make_mosaic_url
     response = JSON.parse(@response.body)
 
     expected = 'missing image_url param'
@@ -14,7 +14,7 @@ class UploadControllerTest < ActionDispatch::IntegrationTest
 
   test 'should not be able to create mosaic without resolution' do
     url = "#{file_fixture_path}/sky.jpeg"
-    get make_mosaic_url, params: { image_url: url, size: 10 }
+    post make_mosaic_url, params: { image_url: url, size: 10 }
     response = JSON.parse(@response.body)
 
     expected = 'missing resolution param'
@@ -25,7 +25,7 @@ class UploadControllerTest < ActionDispatch::IntegrationTest
 
   test 'should not be able to create mosaic if resolution is invalid' do
     url = "#{file_fixture_path}/sky.jpeg"
-    get make_mosaic_url, params: { image_url: url, size: 'ekd', resolution: 10 }
+    post make_mosaic_url, params: { image_url: url, size: 'ekd', resolution: 10 }
     response = JSON.parse(@response.body)
 
     expected = 'invalid size param'
@@ -35,7 +35,7 @@ class UploadControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should not be able to create mosaic without size' do
-    get make_mosaic_url, params: { image_url: 'https://i.imgur.com/VLL0Imub.jpg', resolution: 10 }
+    post make_mosaic_url, params: { image_url: 'https://i.imgur.com/VLL0Imub.jpg', resolution: 10 }
     response = JSON.parse(@response.body)
 
     expected = 'missing size param'
@@ -46,7 +46,7 @@ class UploadControllerTest < ActionDispatch::IntegrationTest
 
   test 'should not be able to create mosaic if size is invalid' do
     url = "#{file_fixture_path}/sky.jpeg"
-    get make_mosaic_url, params: { image_url: url, size: 'ekd', resolution: 10 }
+    post make_mosaic_url, params: { image_url: url, size: 'ekd', resolution: 10 }
     response = JSON.parse(@response.body)
 
     expected = 'invalid size param'
@@ -63,7 +63,7 @@ class UploadControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should suggest to increase resolution or size' do
-    get make_mosaic_url, params: { image_url: 'https://i.imgur.com/VLL0Imub.jpg', size: 10, resolution: 1 }
+    post make_mosaic_url, params: { image_url: 'https://i.imgur.com/VLL0Imub.jpg', size: 10, resolution: 1 }
     response = JSON.parse(@response.body)
 
     expected = "can't generate grid, try increasing resolution or size"
@@ -74,7 +74,7 @@ class UploadControllerTest < ActionDispatch::IntegrationTest
 
   test 'should return hash' do
     url = "#{file_fixture_path}/black_square.jpeg"
-    get make_mosaic_url, params: { image_url: 'https://i.imgur.com/VLL0Imub.jpg', size: 10, resolution: 1 }
+    post make_mosaic_url, params: { image_url: 'https://i.imgur.com/VLL0Imub.jpg', size: 10, resolution: 1 }
     response = JSON.parse(@response.body)
 
     expected = "can't generate grid, try increasing resolution or size"
