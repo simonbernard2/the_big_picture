@@ -2,15 +2,14 @@
 
 ## Intro
 
-**The Big Picture**
+**The Big Picture** 
 
 ## Requirements
 
-* Ruby 3.0.0 or above
 * Linux, MacOS or Windows
-* ImageMagick
-    * visit https://github.com/rmagick/rmagick to get instructions
-* mysql
+* [Ruby 3.0.0 or above](https://www.ruby-lang.org/en/downloads/)
+* [ImageMagick 7.0.8 or later](https://imagemagick.org/script/download.php)
+* [MySQL](https://www.mysql.com/downloads/)
 
 ## Installation
 
@@ -26,13 +25,13 @@ rails db:migrate
 rails db:seed
 ```
 
-Start the server with ```rails s```
+Start the server using ```rails s```
 
 ## Adding images to the database
 
-Send a POST request to **http://localhost:3000/upload_images** using Postman
+Send a POST request to **http://localhost:3000/upload_images** using Postman.
 
-Your json data structure should look like this:
+Your JSON data structure should look like this:
 
 ```json
 {
@@ -51,15 +50,121 @@ Your json data structure should look like this:
 
 ## Creating a mosaic from an image
 
-Send a GET request to **localhost:3000/make_mosaic**
+Send a POST request to **localhost:3000/make_mosaic**
 
-Make sure you include the followings parameters in your query:
+Your JSON data should look like this:
 
-* image_url: the url where your image is hosted at
-* size: this represents how many "pictures in a row" you would like
-* resolution (0-255): this the lower the number, the more accurate the color will match.
+```json
+{
+    "image_url": "https://i.imgur.com/KfutyIK.jpeg",
+    "size": 10,
+    "resolution":30
+}
+```
 
-example: **http://localhost:3000/make_mosaic?image_url=https://i.imgur.com/KfutyIK.jpeg&size=10&resolution=4**
+Upon success, you should get the following response:
+
+<details>
+  <summary>Click here to see the JSON response.</summary>
+
+```json
+{
+    "status": "ok",
+    "data": [
+        {
+            "picture_id": 54,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "picture_id": 8,
+            "x": 0,
+            "y": 1
+        },
+        {
+            "picture_id": 10,
+            "x": 0,
+            "y": 2
+        },
+        {
+            "picture_id": 3,
+            "x": 1,
+            "y": 0
+        },
+        {
+            "picture_id": 19,
+            "x": 1,
+            "y": 1
+        },
+        {
+            "picture_id": 28,
+            "x": 1,
+            "y": 2
+        },
+        {
+            "picture_id": 23,
+            "x": 2,
+            "y": 0
+        },
+        {
+            "picture_id": 38,
+            "x": 2,
+            "y": 1
+        },
+        {
+            "picture_id": 10,
+            "x": 2,
+            "y": 2
+        },
+        {
+            "picture_id": 23,
+            "x": 3,
+            "y": 0
+        },
+        {
+            "picture_id": 8,
+            "x": 3,
+            "y": 1
+        },
+        {
+            "picture_id": 3,
+            "x": 3,
+            "y": 2
+        },
+        {
+            "picture_id": 3,
+            "x": 4,
+            "y": 0
+        },
+        {
+            "picture_id": 3,
+            "x": 4,
+            "y": 1
+        },
+        {
+            "picture_id": 19,
+            "x": 4,
+            "y": 2
+        },
+        {
+            "picture_id": 10,
+            "x": 5,
+            "y": 0
+        },
+        {
+            "picture_id": 8,
+            "x": 5,
+            "y": 1
+        },
+        {
+            "picture_id": 28,
+            "x": 5,
+            "y": 2
+        }
+    ]
+}
+```
+</details>
 
 ## Testing
 
