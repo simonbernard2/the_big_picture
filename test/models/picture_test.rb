@@ -44,6 +44,25 @@ class PictureTest < ActiveSupport::TestCase
     assert_equal expected_height, actual_height
   end
 
+  test 'should correctly set rgb values' do
+    url = "#{file_fixture_path}/black_square.jpeg"
+    picture = Picture.new(image_url: url)
+    expected = [0, 0, 0]
+    actual = [picture.red_value, picture.green_value, picture.blue_value]
+
+    assert_equal expected, actual
+  end
+
+  test 'should return the white square picture' do
+    url = "#{file_fixture_path}/white_square.jpeg"
+    picture = Picture.new(image_url: url)
+    picture.save
+    expected = picture
+    actual = Picture.find_matching_picture(255, 255, 255, 2)
+
+    assert_equal expected, actual
+  end
+
   test 'returns valid color hash' do
     expected = [[{ red: 189, green: 178, blue: 166 },
                  { red: 189, green: 178, blue: 166 },

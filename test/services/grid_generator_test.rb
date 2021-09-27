@@ -29,10 +29,10 @@ class GridGeneratorTest < ActionDispatch::IntegrationTest
     assert_not @high_resolution_grid.make_picture_hash
   end
 
-  test 'should return black image' do
+  test 'should return black square image' do
     rgb = { red: 0, green: 0, blue: 0 }
     expected = pictures(:black)
     actual = @black_grid.find_matching_picture(rgb)
-    assert_equal expected, actual, 'did not return the black picture'
+    assert_equal expected, actual, 'did not return the black square picture'
   end
 end
