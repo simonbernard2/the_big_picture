@@ -169,3 +169,17 @@ Upon success, you should get the following response:
 ## Testing
 
 To run the tests: ```rails test```
+
+## What's next?
+Here are a few things that should be added to the project:
+* Adding security
+* Minimizing picture repetition 
+* Uploading images instead of relying on urls
+* Generating a preview image of the mosaic
+* Adding users
+* Make users upload images for themselves or to the whole community
+* Considering images ratios in order to generate a "cleaner" mosaic
+* Taking advantage of images' metadata
+* Setting up front-end
+* Implementing a payment method
+
