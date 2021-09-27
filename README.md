@@ -17,7 +17,7 @@ Install the missing requirements if any.
 
 Copy the repo, cd into it and ```bundle install```.
 
-Setup the database with
+Setup the database with:
 
 ```
 rails db:create
@@ -25,13 +25,13 @@ rails db:migrate
 rails db:seed
 ```
 
-Start the server using ```rails s```
+Start the server using ```rails s```.
 
 ## Adding images to the database
 
 Send a POST request to **http://localhost:3000/upload_images** using Postman.
 
-Your JSON data structure should look like this:
+Your JSON data structure should look something like this:
 
 ```json
 {
@@ -50,17 +50,19 @@ Your JSON data structure should look like this:
 
 ## Creating a mosaic from an image
 
-Send a POST request to **localhost:3000/make_mosaic**
+Send a POST request to **localhost:3000/make_mosaic** using Postman.
 
-Your JSON data should look like this:
+Your JSON data should look something like this:
 
 ```json
 {
     "image_url": "https://i.imgur.com/KfutyIK.jpeg",
-    "size": 10,
+    "size": 5,
     "resolution":30
 }
 ```
+
+**The Big Picture** will "chop" your main picture into a grid based on the _size_ value you provide. For every square of the grid, an average color will be determined and **The Big Picture** will try to find a picture with a similar average color value from it's database. The higher the _resolution_ value, the broader the search will be.
 
 Upon success, you should get the following response:
 
@@ -180,6 +182,6 @@ Here are a few things that should be added to the project:
 * Make users upload images for themselves or to the whole community
 * Considering images ratios in order to generate a "cleaner" mosaic
 * Taking advantage of images' metadata
-* Setting up front-end
+* Setting up the front-end
 * Implementing a payment method
 
