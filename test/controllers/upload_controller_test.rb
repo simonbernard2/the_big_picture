@@ -63,7 +63,7 @@ class UploadControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should suggest to increase resolution or size' do
-    post make_mosaic_url, params: { image_url: 'https://i.imgur.com/VLL0Imub.jpg', size: 10, resolution: 1 }
+    post make_mosaic_url, params: { image_url: 'https://i.imgur.com/VLL0Imub.jpg', size: 10, resolution: 3 }
     response = JSON.parse(@response.body)
 
     expected = "can't generate grid, try increasing resolution or size"
@@ -73,12 +73,12 @@ class UploadControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should return hash' do
-    url = "#{file_fixture_path}/black_square.jpeg"
-    post make_mosaic_url, params: { image_url: 'https://i.imgur.com/VLL0Imub.jpg', size: 10, resolution: 1 }
+    url = "#{file_fixture_path}/white_square.jpeg"
+    post make_mosaic_url, params: { image_url: url, size: 2, resolution: 1}
     response = JSON.parse(@response.body)
 
-    expected = "can't generate grid, try increasing resolution or size"
-    actual = response['message']
+    expected = 'ok'
+    actual = response['status']
 
     assert_equal expected, actual
   end

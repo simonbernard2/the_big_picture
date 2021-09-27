@@ -15,7 +15,7 @@
 
 Install the missing requirements if any.
 
-Copy the repo, cd into it and ```bundle install```.
+Copy the repo, cd into it then run ```bundle install```.
 
 Setup the database with:
 
@@ -25,7 +25,7 @@ rails db:migrate
 rails db:seed
 ```
 
-Start the server using ```rails s```.
+Start the server by running ```rails s```.
 
 ## Adding images to the database
 
@@ -62,7 +62,7 @@ Your JSON data should look something like this:
 }
 ```
 
-**The Big Picture** will "chop" your main picture into a grid based on the _**size**_ you provided. For every square of the grid, an average color will be determined and **The Big Picture** will try to find a picture with a similar average color from it's database. The higher the _**resolution**_ value, the broader the search will be.
+**The Big Picture** will "chop" your main picture into a grid based on the _**size**_ you provided. For every square of the grid, the average color will be calculated and **The Big Picture** will try to find a picture with a similar color from it's database. The higher the _**resolution**_ value, the broader the search will be.
 
 Upon success, you should get a response that looks like this:
 
@@ -183,5 +183,6 @@ Here are a few things that should be added to the project:
 * Considering images ratios in order to generate a "cleaner" mosaic
 * Taking advantage of images' metadata
 * Setting up the front-end
+* Setting up the printing layouts
 * Implementing a payment method
 

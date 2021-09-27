@@ -17,6 +17,7 @@
 #
 
 one:
+  id: 1
   title: MyString
   subtitle: MyString
   image_url: https://i.imgur.com/GL7igry.png
@@ -28,6 +29,7 @@ one:
   blue_value: 128
 
 two:
+  id: 2
   title: MyString
   subtitle: MyString
   image_url: https://i.imgur.com/OuSizUw.jpeg
@@ -39,6 +41,7 @@ two:
   blue_value: 137
 
 black:
+  id: 3
   title: black
   image_url: https://i.imgur.com/NakfHv4.jpeg
   ratio: 0.6
@@ -49,6 +52,18 @@ black:
   blue_value: 0
 
 no_pic:
+  id: 4
   title: MyString
   subtitle: MyString
   image_url:
+
+white:
+  id: 5
+  title: white
+  image_url: https://i.imgur.com/NakfHv4.jpeg
+  ratio: 0.6
+  width: 1440
+  height: 2560
+  red_value: 255
+  green_value: 255
+  blue_value: 255
