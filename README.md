@@ -50,7 +50,7 @@ Your JSON data structure should look something like this:
 
 ## Creating a mosaic from an image
 
-Send a POST request to **localhost:3000/make_mosaic** using Postman.
+Send a POST request to **http://localhost:3000/make_mosaic** using Postman.
 
 Your JSON data should look something like this:
 
