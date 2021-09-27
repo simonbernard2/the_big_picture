@@ -72,4 +72,15 @@ class UploadControllerTest < ActionDispatch::IntegrationTest
     assert_equal expected, actual
   end
 
+  test 'should return hash' do
+    url = "#{file_fixture_path}/black_square.jpeg"
+    get make_mosaic_url, params: { image_url: 'https://i.imgur.com/VLL0Imub.jpg', size: 10, resolution: 1 }
+    response = JSON.parse(@response.body)
+
+    expected = "can't generate grid, try increasing resolution or size"
+    actual = response['message']
+
+    assert_equal expected, actual
+  end
+
 end
