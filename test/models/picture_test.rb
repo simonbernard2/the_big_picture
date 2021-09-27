@@ -24,21 +24,42 @@ class PictureTest < ActiveSupport::TestCase
   end
 
   test 'should save picture with url' do
-    picture = pictures(:one)
-    assert picture.save
+    url = "#{file_fixture_path}/sky.jpeg"
+    picture = Picture.new(image_url: url)
+    assert_difference 'Picture.count' do
+      picture.save
+    end
   end
 
   test 'dimensions should be set correctly' do
-    assert_equal 1, pictures(:one).height
-    assert_equal 1, pictures(:one).width
+    url = "#{file_fixture_path}/sky.jpeg"
+    picture = Picture.new(image_url: url)
 
-    pictures(:one).set_dimensions
+    expected_width = 160
+    expected_height = 160
+    actual_width = picture.width
+    actual_height = picture.height
 
-    assert pictures(:one).height == 1920
-    assert pictures(:one).width == 1080
+    assert_equal expected_width, actual_width
+    assert_equal expected_height, actual_height
   end
 
-  test 'create color hash' do
-    assert_equal 11, pictures(:two).make_color_hash(10,10).size
+  test 'returns valid color hash' do
+    expected = [[{ red: 189, green: 178, blue: 166 },
+                 { red: 189, green: 178, blue: 166 },
+                 { red: 189, green: 178, blue: 166 }],
+                [{ red: 186, green: 169, blue: 153 },
+                 { red: 186, green: 169, blue: 153 },
+                 { red: 186, green: 169, blue: 153 }],
+                [{ red: 181, green: 159, blue: 138 },
+                 { red: 181, green: 159, blue: 138 },
+                 { red: 181, green: 159, blue: 138 }]]
+    actual = pictures(:two).make_color_hash(2, 2)
+
+    assert_equal expected, actual
+  end
+
+  test 'should not generate a color hash from values less than two' do
+    assert_not pictures(:two).make_color_hash(0, 0)
   end
 end

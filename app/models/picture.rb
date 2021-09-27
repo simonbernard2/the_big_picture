@@ -34,17 +34,9 @@ class Picture < ApplicationRecord
     Magick::Image.read(image_url)[0]
   end
 
-  def set_dimensions
-    img = magick_image
-    self.width = img.columns
-    self.height = img.rows
-  end
-
-  def set_ratio
-    self.ratio = (width.to_f / height).round(1)
-  end
-
   def make_color_hash(rows, cols)
+    return false if (rows < 2 || cols < 2)
+
     img = magick_image
     tile_width = width.to_f / rows
     tile_height = height.to_f / cols
@@ -69,5 +61,23 @@ class Picture < ApplicationRecord
     self.red_value = rgb[:red]
     self.green_value = rgb[:green]
     self.blue_value = rgb[:blue]
+  end
+
+  def self.find_matching_picture(red, green, blue, resolution)
+    where(red_value: (red - resolution)..(red + resolution),
+          green_value: (green - resolution)..(green + resolution),
+          blue_value: (blue - resolution)..(blue + resolution)).sample(1).first
+  end
+
+  private
+
+  def set_dimensions
+    img = magick_image
+    self.width = img.columns
+    self.height = img.rows
+  end
+
+  def set_ratio
+    self.ratio = (width.to_f / height).round(1)
   end
 end

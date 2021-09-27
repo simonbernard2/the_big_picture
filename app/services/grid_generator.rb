@@ -7,16 +7,11 @@ class GridGenerator
     set_dimensions
   end
 
-  def set_dimensions
-    ratio = @picture.ratio
-    horizontal_tiles_count = @size
-    vertical_tiles_count = (horizontal_tiles_count / ratio).to_i
-    @width = horizontal_tiles_count
-    @height = vertical_tiles_count
-  end
 
   def make_picture_hash
     arr = []
+    return false if (@width < 2 || @height < 2 )
+
     color_hash = @picture.make_color_hash(@width, @height)
     color_hash.each_with_index do |row, row_index|
       row.each_with_index do |col, col_index|
@@ -33,11 +28,18 @@ class GridGenerator
     red = rgb[:red]
     green = rgb[:green]
     blue = rgb[:blue]
-    pic = Picture.where(red_value: (red - @resolution)..(red + @resolution),
-                        green_value: (green - @resolution)..(green + @resolution),
-                        blue_value: (blue - @resolution)..(blue + @resolution)).sample(1).first
+    pic = Picture.find_matching_picture(red, green, blue, @resolution)
     false unless pic
     pic
+  end
+
+  private
+  def set_dimensions
+    ratio = @picture.ratio
+    horizontal_tiles_count = @size
+    vertical_tiles_count = (horizontal_tiles_count / ratio).to_i
+    @width = horizontal_tiles_count
+    @height = vertical_tiles_count
   end
 
 end
