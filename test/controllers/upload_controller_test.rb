@@ -9,15 +9,15 @@ class UploadControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should not be able to create mosaic without resolution' do
-    get make_mosaic_url,params: {image_url:"https://i.imgur.com/VLL0Imub.jpg", size:10 }
+    get make_mosaic_url, params: { image_url: 'https://i.imgur.com/VLL0Imub.jpg', size: 10 }
     response = JSON.parse(@response.body)
-    assert_equal "missing resolution param", response['message']
+    assert_equal 'missing resolution param', response['message']
   end
 
   test 'should not be able to create mosaic without size' do
-    get make_mosaic_url,params: {image_url:"https://i.imgur.com/VLL0Imub.jpg", resolution: 10 }
+    get make_mosaic_url, params: { image_url: 'https://i.imgur.com/VLL0Imub.jpg', resolution: 10 }
     response = JSON.parse(@response.body)
-    assert_equal "missing size param", response['message']
+    assert_equal 'missing size param', response['message']
   end
 
   test 'should add 8 pictures to db' do
@@ -28,7 +28,7 @@ class UploadControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should suggest to increase resolution' do
-    get make_mosaic_url,params: {image_url:"https://i.imgur.com/VLL0Imub.jpg", size:10, resolution:1 }
+    get make_mosaic_url, params: { image_url: 'https://i.imgur.com/VLL0Imub.jpg', size: 10, resolution: 1 }
     response = JSON.parse(@response.body)
     assert_equal "can't generate grid, try increasing resolution", response['message']
   end
