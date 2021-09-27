@@ -21,7 +21,7 @@ class UploadController < ApplicationController
 
     grid = GridGenerator.new(main_picture, size, resolution)
     data = grid.make_picture_hash
-    return render json: { status: 'error', message: "can't generate grid, try increasing resolution" } unless data
+    return render json: { status: 'error', message: "can't generate grid, try increasing resolution or size" } unless data
 
     render json: { status: 'ok', data: data }
   end

@@ -62,11 +62,11 @@ class UploadControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'should suggest to increase resolution' do
+  test 'should suggest to increase resolution or size' do
     get make_mosaic_url, params: { image_url: 'https://i.imgur.com/VLL0Imub.jpg', size: 10, resolution: 1 }
     response = JSON.parse(@response.body)
 
-    expected = "can't generate grid, try increasing resolution"
+    expected = "can't generate grid, try increasing resolution or size"
     actual = response['message']
 
     assert_equal expected, actual
