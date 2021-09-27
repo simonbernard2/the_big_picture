@@ -22,10 +22,10 @@ one:
   image_url: https://i.imgur.com/GL7igry.png
   ratio: 1.5
   width: 1
-  height: 173
-  red_value: 150
-  green_value: 128
-  blue_value: 1
+  height: 1
+  red_value: 173
+  green_value: 150
+  blue_value: 128
 
 two:
   title: MyString
