@@ -62,7 +62,7 @@ Your JSON data should look something like this:
 }
 ```
 
-**The Big Picture** will "chop" your main picture into a grid based on the _size_ you provided. For every square of the grid, an average color will be determined and **The Big Picture** will try to find a picture with a similar average color from it's database. The higher the _resolution_ value, the broader the search will be.
+**The Big Picture** will "chop" your main picture into a grid based on the _**size**_ you provided. For every square of the grid, an average color will be determined and **The Big Picture** will try to find a picture with a similar average color from it's database. The higher the _**resolution**_ value, the broader the search will be.
 
 Upon success, you should get a response that looks like this:
 
