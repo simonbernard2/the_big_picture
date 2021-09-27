@@ -67,7 +67,7 @@ Your JSON data should look something like this:
 Upon success, you should get a response that looks like this:
 
 <details>
-  <summary>Click here to see the JSON response.</summary>
+  <summary>Click here to see the sample JSON response.</summary>
 
 ```json
 {
