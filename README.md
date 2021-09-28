@@ -2,7 +2,7 @@
 
 ## Intro
 
-**The Big Picture** is an image repository that allows users to upload their pictures. The thing that makes it different though is that it is being able to _generate a image from other images_. You will get a package of your printed photos, with indications on the back of each one telling you were it belongs on the generated grid. It is the perfect way to decorate your home and it all ties up your photos into **one big picture**. 
+**The Big Picture** is an image repository that allows users to upload their pictures. What makes it different is that it is capable of _creating an image from other images_. You will get a package of your printed photos, with indications on the back of each one telling you where they belong on the generated grid. It is the perfect way to decorate your home and it all ties up your photos into **one big picture**. 
 
 Enjoy.
 
