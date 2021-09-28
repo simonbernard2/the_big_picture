@@ -1,5 +1,7 @@
 # The Big Picture
 
+![Example of a image mosaic](https://i2-prod.mirror.co.uk/incoming/article848233.ece/ALTERNATES/s615b/BBC%20SOUTH%20EAST%20PRESENTS%20THE%20PEOPLE%E2%80%99S%20MONARCH)
+
 ## Intro
 
 **The Big Picture** is an image repository that allows users to upload their pictures. What makes it different is that it is capable of _creating an image from other images_. You will get a package of your printed photos, with indications on the back of each one telling you where they belong on the generated grid. It is the perfect way to decorate your home and it all ties up your photos into **one big picture**. 
